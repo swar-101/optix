@@ -1,11 +1,11 @@
-"""CLI entry point for Optix (demo/live mode)."""
+"""CLI entry point for MarketFabric (demo/live mode)."""
 
 import argparse
 from app.main import run
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Optix - Real-time options analytics engine")
+    parser = argparse.ArgumentParser(description="MarketFabric - Real-time options analytics engine")
     parser.add_argument(
         "--mode",
         choices=["demo", "live"],

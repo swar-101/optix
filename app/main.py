@@ -1,4 +1,4 @@
-"""Entry point for the Optix computation loop."""
+"""Entry point for the MarketFabric computation loop."""
 
 import logging
 from app.config import SYMBOLS, REFRESH_INTERVAL

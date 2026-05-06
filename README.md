@@ -1,10 +1,10 @@
-# Optix
+# MarketFabric
 
 Real-time options analytics engine for computing Implied Volatility (IV), Greeks, and Open Interest (OI) changes from live market data.
 
 ## Overview
 
-Optix is a stateful computation engine that ingests live options data, processes it efficiently, and outputs structured analytics for downstream consumption (Excel, CSV, dashboards).
+MarketFabric is a stateful computation engine that ingests live options data, processes it efficiently, and outputs structured analytics for downstream consumption (Excel, CSV, dashboards).
 
 The system is designed for low-latency updates, minimal recomputation, and decision-grade accuracy.
 
@@ -50,7 +50,7 @@ Data Source → Ingestion → State Manager → Compute Engine → Output Writer
 ## Folder Structure
 
 ```
-optix/
+market-fabric/
 │
 ├── app/
 │   ├── main.py                # Entry point

@@ -1,32 +1,63 @@
 # MarketFabric
 
-Real-time options analytics engine for computing Implied Volatility (IV), Greeks, and Open Interest (OI) changes from live market data.
+MarketFabric is a modular market-data runtime designed to offload options-chain ingestion, normalization, and analytics from Excel-based trading workflows.
+The system focuses on reliable observational decision support for options monitoring workflows.
 
-## Overview
+## Why MarketFabric Exists
 
-MarketFabric is a stateful computation engine that ingests live options data, processes it efficiently, and outputs structured analytics for downstream consumption (Excel, CSV, dashboards).
+The project was created to improve the responsiveness, stability, and reliability of Excel-driven market observation systems used for options analysis.
 
-The system is designed for low-latency updates, minimal recomputation, and decision-grade accuracy.
+Instead of tightly coupling market computation directly to Excel runtime behavior, MarketFabric separates:
+
+- ingestion
+- normalization
+- computation
+- presentation
+
+This allows Excel to behave as a lightweight observational client rather than the primary execution engine.
 
 ---
 
-## Features
+## Current Scope (V1)
 
-* Real-time option chain ingestion
-* Change in Open Interest (OI) computation
-* Implied Volatility (IV) solver
-* Greeks computation (Delta, Gamma, Vega, Theta)
-* Stateful caching for performance optimization
-* CSV output compatible with Excel dashboards
-* Demo mode with mock data
+MarketFabric V1 currently focuses on:
+
+- AngelOne SmartAPI integration
+- live option-chain ingestion
+- normalized option records
+- CE/PE strike pairing
+- Open Interest (OI) change tracking
+- CSV-based output generation
+- runtime stabilization and architecture extraction
+
+See the full V1 scope here:
+
+-> [V1 Specification](docs/market-fabric-v1.md)
 
 ---
 
 ## Architecture
+Current runtime flow:
 
-Data Flow:
-
-Data Source → Ingestion → State Manager → Compute Engine → Output Writer
+```text
+Broker API
+    ↓
+Authentication
+    ↓
+Scrip Master Resolution
+    ↓
+Token Resolution
+    ↓
+Market Data Fetch
+    ↓
+Normalization
+    ↓
+State Management
+    ↓
+Analytics
+    ↓
+Output Adapters
+```
 
 ### Components
 
@@ -47,45 +78,25 @@ Data Source → Ingestion → State Manager → Compute Engine → Output Writer
 
 ---
 
-## Folder Structure
+## Project Structure
 
-```
+```text
 market-fabric/
 │
 ├── app/
-│   ├── main.py                # Entry point
-│   ├── config.py              # Configuration (symbols, refresh rate)
-│
+│   ├── auth/
+│   ├── metadata/
 │   ├── ingestion/
-│   │   └── angel_client.py    # API integration
-│
-│   ├── state/
-│   │   └── state_manager.py   # Stores previous OI, IV, prices
-│
+│   ├── normalization/
 │   ├── compute/
-│   │   ├── iv_solver.py       # Implied Volatility solver
-│   │   ├── greeks.py          # Greeks calculations
-│   │   └── oi.py              # OI change logic
-│
+│   ├── state/
 │   ├── output/
-│   │   └── writer.py          # CSV writer
-│
-│   ├── utils/
-│   │   └── time_utils.py
-│
-│   └── demo/
-│       └── mock_data.py       # Demo mode generator
+│   └── utils/
 │
 ├── data/
-│   └── output.csv             # Generated output
-│
+├── docs/
 ├── logs/
-│   └── app.log
-│
-├── .env                       # API credentials
-├── requirements.txt
-├── README.md
-└── run.py                     # CLI entry (demo/live)
+└── run.py
 ```
 
 ---
@@ -102,17 +113,13 @@ pip install -r requirements.txt
 
 ### Demo Mode
 
-```
+```bash
 python run.py --mode demo
 ```
 
-Generates mock data and writes to CSV.
-
----
-
 ### Live Mode
 
-```
+```bash
 python run.py --mode live
 ```
 

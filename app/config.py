@@ -1,7 +1,7 @@
 """Configuration — symbols, strike range, expiry, refresh rate."""
 
 # Symbols to track
-SYMBOLS = ["NIFTY", "BANKNIFTY"]
+SYMBOLS = ["NIFTY"]
 
 # Number of strikes above and below ATM to include
 STRIKE_RANGE = 10

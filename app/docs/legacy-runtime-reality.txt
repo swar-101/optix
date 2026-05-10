@@ -1,0 +1,43 @@
+Legacy Runtime Reality
+
+The old system:
+
+    * fetched market data
+    * merged CE/PE
+    * computed OI changes
+    * computed IV
+    * computed Delta
+    * built analytics panels
+    * wrote directly into Excel
+    * managed workbook lifecycle
+    * handled thread pools
+    * handled retries
+    * handled rate limiting
+    * controlled Excel rendering behavior
+
+All inside one operational runtime.
+
+
+Excel was tightly coupled to the runtime lifecycle.
+
+That coupling created:
+
+    * heaviness
+    * instability
+    * UI blocking
+    * workbook overhead
+    * save latency
+    * rendering cost
+    * operational fragility
+
+
+MarketFabric's real goal:
+    decouple operational runtime from presentation runtime
+
+
+    Old system:
+        Excel-centric runtime
+
+    New system:
+        runtime-centric architecture
+        with Excel as presentation adapter

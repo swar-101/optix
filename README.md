@@ -32,7 +32,7 @@ MarketFabric V1 currently focuses on:
 
 See the full V1 scope here:
 
--> [V1 Specification](docs/market-fabric-v1.md)
+-> [V1 Specification](app/docs/market-fabric-v1.md)
 
 ---
 
